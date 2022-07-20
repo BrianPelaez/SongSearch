@@ -18,24 +18,20 @@ const SongSearch = () => {
 
       let artistUrl = `https://theaudiodb.com/api/v1/json/2/search.php?s=${artist}`;
       let songUrl = `https://api.lyrics.ovh/v1/${artist}/${song}`;
-      let headers = {
-        headers:{
-            'Content-Type': 'application/json'
-          }
-      }
+
       setLoading(true);
+
       const [artistRes, songRes] = await Promise.all([
         helpHTTP().get(artistUrl),
-        helpHTTP().get(songUrl, headers)
+        helpHTTP().get(songUrl),
       ]);
 
-      
+      // console.log(artistRes)
+      // console.log(songRes)
 
       setBio(artistRes);
-      setLetra(songRes)
+      setLetra(songRes);
       setLoading(false);
-      console.log(artistRes)
-      console.log(songRes)
     };
 
     fetchSong();
@@ -49,9 +45,13 @@ const SongSearch = () => {
   return (
     <div>
       <h1>Buscador de canciones</h1>
-      {loading && <Loader />}
-      <SongForm handleSearch={handleSearch} />
-      <SongDetails search={search} letra={letra} bio={bio} />
+      <article className="grid-1-3">
+        <SongForm handleSearch={handleSearch} />
+        {loading && <Loader />}
+        {search && !loading && (
+          <SongDetails search={search} letra={letra} bio={bio} />
+        )}
+      </article>
     </div>
   );
 };

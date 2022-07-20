@@ -19,7 +19,7 @@ export const helpHTTP = () => {
   
       setTimeout(() => {
         controller.abort(); //Si despues de 3s no obtenemos respuesta del servidor, que aborte
-      }, 3000);
+      }, 45000);
   
       return fetch(endpoint, options)
         .then((res) =>

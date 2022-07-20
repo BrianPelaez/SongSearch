@@ -24,7 +24,7 @@ const SongForm = ({ handleSearch }) => {
   };
 
   return (
-    <div className="container">
+    <div>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

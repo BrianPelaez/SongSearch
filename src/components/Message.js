@@ -1,8 +1,12 @@
+import { findByLabelText } from '@testing-library/react';
 import React from 'react'
 
 const Message = ({msg, bgColor}) => {
 
     let styles={
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
         padding: "1rem",
         marginBottom: "1rem",
         textAlign: "center",
